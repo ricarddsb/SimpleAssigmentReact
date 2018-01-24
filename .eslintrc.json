@@ -1,0 +1,24 @@
+{
+  "extends": "airbnb",
+  "parser": "babel-eslint",
+  "settings": {
+    "import/ignore": [
+      "node_modules",
+      ".(json|css)$"
+    ],
+    "import/resolver": {
+      "node": {
+        "extensions": ["", ".js", ".jsx", ".css", ".scss", ".png", ".jpg"],
+        "moduleDirectory": ["node_modules", "client"]
+      }
+    }
+  },
+  "rules": {
+    "import/no-extraneous-dependencies": [0, { }],
+    "max-len": [2, 100],
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }]
+  },
+  "env": {
+    "browser": true
+  }
+}
