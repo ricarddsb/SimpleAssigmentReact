@@ -1,0 +1,24 @@
+{
+  "name": "simpleassigment",
+  "version": "1.0.0",
+  "description": "simple assigment with react react-router bootstrap",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm run test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ricarddsb/SimpleAssigmentReact.git"
+  },
+  "keywords": [
+    "react",
+    "react-dom",
+    "bootstrap"
+  ],
+  "author": "RicardSan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ricarddsb/SimpleAssigmentReact/issues"
+  },
+  "homepage": "https://github.com/ricarddsb/SimpleAssigmentReact#readme"
+}
