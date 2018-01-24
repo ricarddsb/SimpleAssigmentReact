@@ -3,8 +3,7 @@ import HtmlWebpackPlugin from 'html-webpack-plugin';
 import config from './config';
 
 // Webpack configuration
-export const dev = {
-  // context: config.paths.src,
+export default {
   devtool: 'eval',
   entry: [
     config.paths.client,
@@ -37,7 +36,6 @@ export const dev = {
       {
         test: /\.scss$/,
         exclude: /node_modules/,
-        // ExtractTextPlugin.extract([
         use: [
           {
             loader: 'style-loader',
@@ -67,14 +65,10 @@ export const dev = {
     extensions: ['.js', '.jsx'],
   },
   devServer: {
-    // contentBase: config.paths.src,
     stats: 'errors-only', // show only bundle errors
     hot: true,
     inline: true,
     progress: true,
-    // inline: true,
-    // progress: true,
   },
 };
 
-export const COMMON_CSSS = [];
