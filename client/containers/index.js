@@ -1,5 +1,7 @@
 import App from './App';
+import LoginPage from './LoginPage';
 
-export { // eslint-disable-next-line
+export {
   App,
+  LoginPage,
 };

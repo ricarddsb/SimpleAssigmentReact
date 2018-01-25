@@ -1,7 +1,6 @@
 body {
   overflow:hidden;
-  min-height: 800px;
-  min-width: 500;
+  margin: 0px;
 }
 
 .Footer {
@@ -12,5 +11,11 @@ body {
   line-height: 200%;
   min-height: 30px;
   padding-left: 15px;
-  height: 30px;
+}
+
+.App {
+  margin-top: 100px;
+  display: flex;
+  justify-content: center;
+  vertical-align: middle;
 }

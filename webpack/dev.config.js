@@ -34,6 +34,10 @@ export default {
         ],
       },
       {
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader'],
+      },
+      {
         test: /\.scss$/,
         exclude: /node_modules/,
         use: [
@@ -42,8 +46,16 @@ export default {
           },
           {
             loader: 'css-loader',
-            options: {
-              importLoaders: 1,
+          },
+          {
+            loader: 'postcss-loader',
+            options: { // eslint-disable-next-line
+              plugins: function () { // post css plugins, can be exported to postcss.config.js
+                return [// eslint-disable-next-line
+                  require('precss'),// eslint-disable-next-line
+                  require('autoprefixer')
+                ];
+              },
             },
           },
           {
@@ -53,13 +65,6 @@ export default {
       },
     ],
   },
-  // Enable importing JS files without specifying their's extenstion
-  //
-  // So we can write:
-  // import MyComponent from './my-component';
-  //
-  // Instead of:
-  // import MyComponent from './my-component.jsx';
   resolve: {
     modules: ['client', 'node_modules'],
     extensions: ['.js', '.jsx'],

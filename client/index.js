@@ -1,6 +1,7 @@
 import React from 'react';
 import { render } from 'react-dom';
 import { App } from 'containers';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 ((window) => {
   let app = document.getElementById('react-view');
