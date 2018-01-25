@@ -1,0 +1,6 @@
+{
+  "name": "buttonlogin",
+  "version": "0.0.1",
+  "private": true,
+  "main": "./ButtonLogin.jsx"
+}

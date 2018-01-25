@@ -1,64 +1,53 @@
 import React, { Component } from 'react';
-// import { InputForm } from 'components';
-/*
-// eslint-disable-next-line
+import { InputForm, ButtonLogin } from 'components';
+
 class LoginPage extends Component {
-  render() {
-    const type = 'text';
-    return (
-      <div>
-        <InputForm type={type} />
-      </div>
-    );
+  constructor(props) {
+    super(props);
+    this.state = {
+      username: '',
+      password: '',
+    };
+
+    this.handleOnClickLogin = this.handleOnClickLogin.bind(this);
+    this.handleInputChange = this.handleInputChange.bind(this);
   }
-}
+  handleOnClickLogin() {
+    const { username, password } = this.state;
+    console.log('avel ', username, password);
+  }
 
-export default LoginPage;
-*/
+  handleInputChange(inputName, inputValue) {
+    this.setState({
+      [inputName]: inputValue,
+    });
+  }
 
-// import React, { Component } from 'react';
-// import { InputForm } from 'components';
-
-/* eslint-disable */
-class LoginPage extends Component {
   render() {
-    const type = 'text';
     return (
-      <form className="form-horizontal">
-        <div className="form-group row">
-          <label
-            forhtml="inputUsername"
-            className="col-sm-5 col-form-label"
-          >
-          Username
-          </label>
-          <div className="col-lg-7">
-            <input
-              type="text"
-              className="form-control"
-              id="ejemplo_email_3"
-              placeholder="Username"
-            />
-          </div>
-        </div>
-        <div className="form-group row">
-          <label
-            forhtml="inputUsername"
-            className="col-sm-5 col-form-label"
-          >
-          Password
-          </label>
-          <div className="col-lg-7">
-            <input
-              type="password"
-              className="form-control"
-              id="passwordId"
-              placeholder="Username"
-            />
-          </div>
-        </div>
-        <button type="submit" class="btn btn-primary">Sign in</button>
-    </form>
+      <form className="form-horizontal" >
+        <InputForm
+          name="username"
+          onChange={this.handleInputChange}
+          label="Username"
+          type="text"
+          id="usernameLogin"
+          forHtml="usernameLogin"
+        />
+        <InputForm
+          name="password"
+          onChange={this.handleInputChange}
+          label="Password"
+          type="password"
+          id="passwordLogin"
+          forHtml="passwordLogin"
+        />
+        <ButtonLogin
+          onClick={this.handleOnClickLogin}
+        >
+          Sign in
+        </ButtonLogin >
+      </form>
     );
   }
 }

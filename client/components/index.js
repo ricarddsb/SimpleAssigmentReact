@@ -1,5 +1,7 @@
-import InputForm from './InputForm';
+import InputForm from './Login/InputForm';
+import ButtonLogin from './Login/ButtonLogin';
 
-export { // eslint-disable-next-line
+export {
+  ButtonLogin,
   InputForm,
 };
