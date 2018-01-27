@@ -28,7 +28,7 @@ export default {
       },
       {
         test: /\.(js|jsx)$/,
-        include: config.paths.client,
+        exclude: /node_modules/,
         use: [
           'babel-loader', 'react-hot-loader/webpack',
         ],
@@ -36,6 +36,17 @@ export default {
       {
         test: /\.css$/,
         use: ['style-loader', 'css-loader'],
+      },
+      {
+        test: /\.(svg)$/,
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              limit: 8192,
+            },
+          },
+        ],
       },
       {
         test: /\.scss$/,

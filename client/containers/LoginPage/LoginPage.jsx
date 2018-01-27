@@ -1,4 +1,8 @@
+import 'regenerator-runtime/runtime';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 import React, { Component } from 'react';
+import { apiActions } from 'actions';
 import { InputForm, ButtonLogin } from 'components';
 
 class LoginPage extends Component {
@@ -9,12 +13,14 @@ class LoginPage extends Component {
       password: '',
     };
 
-    this.handleOnClickLogin = this.handleOnClickLogin.bind(this);
+    this.handleOnLoginButtonClick = this.handleOnLoginButtonClick.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
   }
-  handleOnClickLogin() {
+
+  handleOnLoginButtonClick() {
     const { username, password } = this.state;
-    console.log('avel ', username, password);
+    this.props.apiActions.userDataInput(username, password);
+    this.props.apiActions.loginFetch(username, password);
   }
 
   handleInputChange(inputName, inputValue) {
@@ -43,7 +49,7 @@ class LoginPage extends Component {
           forHtml="passwordLogin"
         />
         <ButtonLogin
-          onClick={this.handleOnClickLogin}
+          onClick={this.handleOnLoginButtonClick}
         >
           Sign in
         </ButtonLogin >
@@ -52,4 +58,10 @@ class LoginPage extends Component {
   }
 }
 
-export default LoginPage;
+function mapDispatchToProps(dispatch) {
+  return {
+    apiActions: bindActionCreators(apiActions, dispatch),
+  };
+}
+
+export default connect(null, mapDispatchToProps)(LoginPage);

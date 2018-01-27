@@ -1,0 +1,33 @@
+{
+"news" :
+[
+  {
+    "id": 0,
+    "Title": "Title1",
+    "PublishDate": "Date",
+    "About": "SubTtitle1",
+    "Content": "content content content content"
+  },
+  {
+    "id": 1,
+    "Title": "Title2",
+    "PublishDate": "date unknown",
+    "About": "SubTtitle2",
+    "Content": "content content content content"
+  },
+  {
+    "id": 2,
+    "Title": "Title3",
+    "PublishDate": "27 - 11 - 2017",
+    "About": "SubTtitle3",
+    "Content": "content content content content"
+  },
+  {
+    "id": 3,
+    "Title": "Title4",
+    "PublishDate": "11/26/2017",
+    "About": "SubTtitle4",
+    "Content": "content content content content"
+  }
+]
+}

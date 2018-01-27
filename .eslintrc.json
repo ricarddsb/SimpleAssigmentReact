@@ -14,10 +14,15 @@
     }
   },
   "rules": {
+    "jsx-a11y/anchor-is-valid": [ "error", { "components": [ "Link" ], "specialLink": [ "to" ] } ],
     "jsx-a11y/label-has-for": 0,
+    "jsx-a11y/click-events-have-key-events": 0,
     "import/no-extraneous-dependencies": [0, { }],
+    "function-paren-newline": [0],
     "max-len": [2, 100],
-    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }]
+    "react/forbid-prop-types": [0, { "forbid": "array", "checkContextTypes": false, "checkChildContextTypes": false }],
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+    "react/prop-types": [0]
   },
   "env": {
     "browser": true
