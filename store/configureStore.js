@@ -3,10 +3,10 @@ import { createStore, applyMiddleware, compose } from 'redux';
 import createSagaMiddleware from 'redux-saga';
 import { DevTools } from 'containers';
 import { persistState } from 'redux-devtools';
-import rootReducer from '../reducers';
+import rootReducer from '../client/reducers';
 import rootSaga from '../sagas';
 
-const reducers = require('../reducers/index');
+const reducers = require('../client/reducers/index');
 
 const sagaMiddleware = createSagaMiddleware();
 /* eslint-disable no-underscore-dangle */
@@ -24,9 +24,9 @@ const enhancer = compose(
 
 export default function configureStore(initialState) {
   const store = createStore(rootReducer, initialState, enhancer);
-  console.log('module is hot ', module.hot)
+
   if (module.hot) {
-    module.hot.accept('../reducers/index', () =>
+    module.hot.accept('../client/reducers/index', () =>
       store.replaceReducer(reducers.default),
     );
   }

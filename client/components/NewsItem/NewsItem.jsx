@@ -1,21 +1,35 @@
 import PropTypes from 'prop-types';
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { Component } from 'react';
+import { NavLink } from 'react-router-dom';
 import IconSvg from '../../assets/font/icons-male-50.svg';
 
-const NewsItem = props => (
-  <tr key={props.id} onClick={() => props.onClick(props.id)}>
-    <td colSpan="2">
-      <Link to="profile">
-        <svg width="22" height="22" viewBox="0 0 600 600" transform="rotate(180)">
-          <path d={IconSvg.path} />
-        </svg>
-      </Link>
-    </td>
-    <td>{props.PublishDate}</td>
-    <td>{props.Title}</td>
-  </tr>
-);
+class NewsItem extends Component {
+  shouldComponentUpdate(nextProps) {
+    return !nextProps.loading;
+  }
+
+  render() {
+    const {
+      id,
+      onClick,
+      PublishDate,
+      Title,
+    } = this.props;
+    return (
+      <tr key={id} onClick={() => onClick(id)}>
+        <td colSpan="2">
+          <NavLink to="profile">
+            <img src={IconSvg} alt="usericon" width="22" height="22" />
+          </NavLink>
+        </td>
+        <td>{PublishDate}</td>
+        <td>
+          {Title}
+        </td>
+      </tr>
+    );
+  }
+}
 
 NewsItem.propTypes = {
   id: PropTypes.number,
@@ -25,7 +39,7 @@ NewsItem.propTypes = {
 };
 
 NewsItem.defaultProps = {
-  id: 0,
+  id: -1,
   Title: '',
   PublishDate: '',
   onClick: '',

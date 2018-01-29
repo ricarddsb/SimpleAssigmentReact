@@ -5,7 +5,7 @@ import {
   call,
   takeLatest,
 } from 'redux-saga/effects';
-import { apiActions } from 'actions';
+import { apiActions, errorActions } from 'actions';
 
 async function login(username, password) {
   const response = await fetch(
@@ -20,6 +20,9 @@ async function login(username, password) {
     },
   ).catch(error => error);
 
+  if (response.status === 401) {
+    return response.statusText;
+  }
   return response.json();
 }
 
@@ -48,17 +51,21 @@ function* fetchNewsById(action) {
     );
     yield put({ type: apiActions.FETCH_NEWS_BY_ID_SUCCESS, fetchResponse });
   } catch (e) {
-    yield put({ type: apiActions.FETCH_DISCO_DATA_SUCCESS, e });
+    yield put({ type: errorActions.GENERAL_ERROR, e });
   }
 }
 
 function* fetchLogin(action) {
   try {
-    const fetchResonse = yield call(login, action.username, action.password);
-    const { news } = fetchResonse;
-    yield put({ type: apiActions.FETCH_LOGIN_SUCCESS, news });
+    const fetchResponse = yield call(login, action.username, action.password);
+    if (typeof fetchResponse === 'string') {
+      yield put({ type: errorActions.UNAUTHORIZED, fetchResponse });
+    } else {
+      const { news } = fetchResponse;
+      yield put({ type: apiActions.FETCH_LOGIN_SUCCESS, news });
+    }
   } catch (e) {
-    yield put({ type: apiActions.FETCH_DISCO_DATA_SUCCESS, e });
+    yield put({ type: errorActions.GENERAL_ERROR, e });
   }
 }
 
@@ -67,7 +74,7 @@ function* fetchRequest() {
     yield takeLatest(apiActions.FETCH_LOGIN_REQUEST, fetchLogin);
     yield takeLatest(apiActions.FETCH_NEWS_BY_ID_REQUEST, fetchNewsById);
   } catch (e) {
-    yield put({ type: apiActions.FETCH_DISCO_DATA_SUCCESS });
+    yield put({ type: errorActions.GENERAL_ERROR, e });
   }
 }
 

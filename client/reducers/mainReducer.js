@@ -2,44 +2,49 @@ import { apiActions } from 'actions';
 
 const defaultState = {
   news: [''],
-  isHiddenLogin: false,
-  isHiddenNews: true,
-  isHiddenProfile: true,
+  showLogin: false,
   userData: {
     username: '',
     password: '',
   },
   newsItem: {},
+  loading: true,
 };
 
 export default function mainManager(state = defaultState, action) {
   switch (action.type) {
+    case apiActions.FETCH_LOGIN_REQUEST:
+      return {
+        ...state,
+        news: action.news,
+        loading: true,
+      };
     case apiActions.FETCH_LOGIN_SUCCESS:
       return {
         ...state,
         news: action.news,
-        isHiddenLogin: !state.isHiddenLogin,
-        isHiddenNews: !state.isHiddenNews,
+        showLogin: true,
+        loading: false,
+      };
+    case apiActions.FETCH_NEWS_BY_ID_REQUEST:
+      return {
+        ...state,
+        loading: true,
       };
     case apiActions.FETCH_NEWS_BY_ID_SUCCESS:
       return {
         ...state,
         newsItem: action.fetchResponse,
-        isHiddenNews: !state.isHiddenNews,
-        isHiddenProfile: !state.isHiddenProfile,
+        loading: false,
       };
     case apiActions.LOGOUT_CLICK:
       return {
         ...state,
-        isHiddenNews: true,
-        isHiddenProfile: true,
-        isHiddenLogin: false,
+        showLogin: false,
       };
     case apiActions.NEWS_CLICK_NAVBAR:
       return {
         ...state,
-        isHiddenNews: false,
-        isHiddenProfile: true,
       };
     case apiActions.USER_DATA_INPUT:
       return {

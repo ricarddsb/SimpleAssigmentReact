@@ -1,4 +1,3 @@
-import 'regenerator-runtime/runtime';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import React, { Component } from 'react';
@@ -64,4 +63,10 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(null, mapDispatchToProps)(LoginPage);
+function mapStateToProps(state) {
+  return {
+    errorMessage: state.errorManager.errorMessage,
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(LoginPage);

@@ -5,15 +5,15 @@ import { NavLink } from 'react-router-dom';
 import './ButtonLogin.scss';
 
 const ButtonLogin = props => (
-  <button
-    type="button"
-    className="btn btn-blue-grey ButtonLogin"
-    onClick={props.onClick}
-  >
-    <NavLink to="/news">
-      Sign in
-    </NavLink>
-  </button>
+  <NavLink to="/news">
+    <button
+      type="button"
+      className="btn btn-blue-grey ButtonLogin"
+      onClick={props.onClick}
+    >
+        Sign in
+    </button>
+  </NavLink>
 );
 
 ButtonLogin.propTypes = {

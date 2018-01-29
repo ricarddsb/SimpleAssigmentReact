@@ -1,5 +1,5 @@
 dist/
 build/
 node_modules/
-client/**/*.spec.*
+**/*.spec.*
 /server

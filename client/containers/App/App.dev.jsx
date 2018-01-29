@@ -1,12 +1,12 @@
 import {
   DevTools,
   LoginPage,
+  Modal,
   NewsContainer,
   NavigationBar,
 } from 'containers';
 import { NewsProfileItem } from 'components';
 import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
 import React from 'react';
 import {
   Route,
@@ -18,36 +18,33 @@ import './App.scss';
 const App = props => (
   <HashRouter>
     <div>
+      { props.errorMessage !== '' && <Modal /> }
       <div>
-        { props.isHiddenLogin && <NavigationBar /> }
-      </div>
-      <div className="text-center App">
-        <Route exact path="/" component={LoginPage} />
-        <Route exact path="/news" render={() => <NewsContainer news={props.news} />} />
-        <Route exact path="/profile" render={() => <NewsProfileItem newsItem={props.newsItem} />} />
-        <DevTools />
+        <div>
+          { props.showLogin && <NavigationBar /> }
+        </div>
+        <div className="text-center App">
+          <Route exact path="/" component={LoginPage} />
+          <Route exact path="/news" render={() => <NewsContainer news={props.news} />} />
+          <Route
+            exact
+            path="/profile"
+            render={() => <NewsProfileItem newsItem={props.newsItem} loading={props.loading} />
+            }
+          />
+          <DevTools />
+        </div>
       </div>
     </div>
   </HashRouter>
 );
 
-App.propTypes = {
-  isHiddenLogin: PropTypes.bool,
-  news: PropTypes.array,
-  newsItem: PropTypes.object,
-};
-
-App.defaultProps = {
-  isHiddenLogin: false,
-  news: [],
-  newsItem: {},
-};
-
 function mapStateToProps(state) {
   return {
-    isHiddenLogin: state.mainManager.isHiddenLogin,
+    showLogin: state.mainManager.showLogin,
     news: state.mainManager.news,
     newsItem: state.mainManager.newsItem,
+    loading: state.mainManager.loading,
   };
 }
 

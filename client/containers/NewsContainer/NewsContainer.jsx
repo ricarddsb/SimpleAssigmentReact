@@ -5,14 +5,16 @@ import PropTypes from 'prop-types';
 import { apiActions } from 'actions';
 import { NewsItem } from 'components';
 
+import './NewsContainer';
+
 class NewsContainer extends Component {
   constructor(props) {
     super(props);
     this.handleOnClickNewsItem = this.handleOnClickNewsItem.bind(this);
   }
 
-  componentWillMount() {
-    return this.props.news.length > 0;
+  shouldComponentUpdate(nextProps) {
+    return !nextProps.loading && nextProps.news !== this.props.news;
   }
 
   handleOnClickNewsItem(itemIndex) {
@@ -49,17 +51,18 @@ class NewsContainer extends Component {
 
 NewsContainer.propTypes = {
   news: PropTypes.array,
-  userData: PropTypes.object,
 };
 
 NewsContainer.defaultProps = {
   news: [],
-  userData: {},
 };
 
 function mapStateToProps(state) {
   return {
     userData: state.mainManager.userData,
+    showNews: state.mainManager.showNews,
+    loading: state.mainManager.loading,
+    errorMessage: state.errorManager.errorMessage,
   };
 }
 
