@@ -1,6 +1,5 @@
-// server.js
-
-const express = require('express');
+import express from 'express';
+import newsRoutes from './routes';
 
 const app = express();
 
@@ -16,7 +15,7 @@ app.use((req, res, next) => {
   next();
 });
 
-require('./routes')(app, {});
+newsRoutes(app, {});
 
 app.listen(port, () => {
   console.log('We are live on ', port);

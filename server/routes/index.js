@@ -1,8 +1,7 @@
-// routes/index.js
+import newsRoutes from './news_routes';
 
-const noteRoutes = require('./news_routes');
-
-module.exports = function (app, db) {
-  noteRoutes(app, db);
+export default function (app) {
+  newsRoutes(app);
   // Other route groups could go here, in the future
-};
+}
+

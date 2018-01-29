@@ -8,7 +8,7 @@ import {
 import { apiActions, errorActions } from 'actions';
 
 async function login(username, password) {
-  const response = await fetch(
+  return fetch(
     'http://localhost:8001/api/v1/news',
     {
       method: 'get',
@@ -18,16 +18,17 @@ async function login(username, password) {
         Authorization: `Basic ${Buffer.from(`${username}:${password}`).toString('base64')}`,
       },
     },
-  ).catch(error => error);
-
-  if (response.status === 401) {
-    return response.statusText;
-  }
-  return response.json();
+  ).then((response) => {
+    console.log('hola', response, response.status);
+    if (response.status === 401) {
+      return response.statusText;
+    }
+    return response.json();
+  }).catch(error => error);
 }
 
 async function getNewsById(itemIndex, username, password) {
-  const response = await fetch(
+  return fetch(
     `http://localhost:8001/api/v1/news/${itemIndex}`,
     {
       method: 'get',
@@ -37,8 +38,7 @@ async function getNewsById(itemIndex, username, password) {
         Authorization: `Basic ${Buffer.from(`${username}:${password}`).toString('base64')}`,
       },
     },
-  ).catch(error => error);
-  return response.json();
+  ).then(response => response.json()).catch(error => error);
 }
 
 function* fetchNewsById(action) {
@@ -58,6 +58,7 @@ function* fetchNewsById(action) {
 function* fetchLogin(action) {
   try {
     const fetchResponse = yield call(login, action.username, action.password);
+    console.log('response login', fetchResponse);
     if (typeof fetchResponse === 'string') {
       yield put({ type: errorActions.UNAUTHORIZED, fetchResponse });
     } else {

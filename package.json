@@ -5,8 +5,9 @@
   "main": "index.js",
   "scripts": {
     "build": "webpack",
+    "babel-node": "babel-node --presets env,stage-1",
     "dev": "webpack-dev-server",
-    "server": "node ./server/server.js",
+    "server": "nodemon --exec npm run babel-node -- ./server/server.js",
     "test": "jest"
   },
   "repository": {
@@ -34,12 +35,14 @@
   },
   "devDependencies": {
     "autoprefixer": "^7.2.5",
+    "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
     "babel-eslint": "^8.2.1",
     "babel-loader": "^7.1.2",
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-1": "^6.24.1",
+    "babelcli": "0.0.2-security",
     "bootstrap": "^4.0.0",
     "css-loader": "^0.28.9",
     "cssnano": "^3.10.0",
@@ -54,7 +57,9 @@
     "identity-obj-proxy": "^3.0.0",
     "jest": "^22.1.4",
     "jest-css-modules": "^1.1.0",
+    "mongoose": "^5.0.2",
     "node-sass": "^4.7.2",
+    "nodemon": "^1.14.11",
     "postcss": "^6.0.16",
     "postcss-cssnext": "^3.1.0",
     "postcss-import": "^11.0.0",
