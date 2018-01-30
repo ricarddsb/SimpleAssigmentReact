@@ -1,11 +1,17 @@
-README
+README MERN SIMPLE PROJECT
 
-SPA Simple project with login page to access some news items.
+SPA MERN Simple project with login page to access some news items.
 
 It also has an api static server done with Express.
 
+Uses mongoDb, needs "mongod.exe" to be executed. When the serves runs it checks
+if coolection "SimpleAssigment" exists if it doesnt it creates the collection
+with static data supplied by mockData.js. Both Api calls consume mongoDb to
+fetch the information. If the server runs before mongod.exe is executed it will fail
+with a console message.
+
 It uses Redux to manage the states, Redux-Saga to manage api calls.
-Uses devtools at dev
+Uses devtools at dev.
 
 It uses react-router-dom to navigate between views.
 
@@ -19,15 +25,22 @@ Uses linting with Airbnb settings.
 
 Uses bootstrap.
 
+mongoose -> to connect with mongoDb
+babel-cli -> provide transpile for /server in package.json "server" script
+nodemon -> any change restarts the server.
+
 ******************************
 
 Do an "npm install"
+
+START MongoDB
+"C:\Program Files\MongoDB\Server\3.6\bin\mongod.exe"
 
 To run the client => "npm run dev"
 To run the server => "npm run server"
 To run the client tests => "npm run test"
 
-Once everything is setted up:
+Once everything is set up:
 
 Username : user
 Password : FCtb2PGbHpgq
