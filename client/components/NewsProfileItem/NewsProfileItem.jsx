@@ -9,27 +9,28 @@ class NewsProfileItem extends Component {
 
   render() {
     const {
-      id, Title, PublishDate, About, Content,
+      id, title, publishDate, about, content,
     } = this.props.newsItem;
+    console.log('avert que recibo, ');
     const { loading } = this.props;
     return (
       <div>
         { !loading &&
           <div key={id}>
             <div className="h1 NewsProfileItem" >
-              {Title}
+              {title}
             </div>
             <div className="h5 NewsProfileItem" >
-              {PublishDate}
+              {publishDate}
             </div>
             <div className="h5 NewsProfileItem" >
-              {About}
+              {about}
             </div>
             <div className="NewsProfileItem">
               <img src={IconSvg} alt="usericon" width="100" height="100" />
             </div>
             <div className="NewsProfileItem Content" >
-              {Content}
+              {content}
             </div>
           </div>
         }

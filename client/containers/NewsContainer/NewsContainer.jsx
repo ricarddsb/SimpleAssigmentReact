@@ -27,9 +27,9 @@ class NewsContainer extends Component {
       <NewsItem
         key={index}
         id={item.id}
-        Title={item.Title}
-        PublishDate={item.PublishDate}
-        About={item.About}
+        Title={item.title}
+        PublishDate={item.publishDate}
+        About={item.about}
         onClick={this.handleOnClickNewsItem}
       />
     );

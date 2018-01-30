@@ -19,7 +19,6 @@ async function login(username, password) {
       },
     },
   ).then((response) => {
-    console.log('hola', response, response.status);
     if (response.status === 401) {
       return response.statusText;
     }
@@ -49,7 +48,8 @@ function* fetchNewsById(action) {
       action.username,
       action.password,
     );
-    yield put({ type: apiActions.FETCH_NEWS_BY_ID_SUCCESS, fetchResponse });
+    const { newsItem } = fetchResponse;
+    yield put({ type: apiActions.FETCH_NEWS_BY_ID_SUCCESS, newsItem });
   } catch (e) {
     yield put({ type: errorActions.GENERAL_ERROR, e });
   }
@@ -58,7 +58,6 @@ function* fetchNewsById(action) {
 function* fetchLogin(action) {
   try {
     const fetchResponse = yield call(login, action.username, action.password);
-    console.log('response login', fetchResponse);
     if (typeof fetchResponse === 'string') {
       yield put({ type: errorActions.UNAUTHORIZED, fetchResponse });
     } else {

@@ -34,7 +34,7 @@ export default function mainManager(state = defaultState, action) {
     case apiActions.FETCH_NEWS_BY_ID_SUCCESS:
       return {
         ...state,
-        newsItem: action.fetchResponse,
+        newsItem: action.newsItem,
         loading: false,
       };
     case apiActions.LOGOUT_CLICK:
