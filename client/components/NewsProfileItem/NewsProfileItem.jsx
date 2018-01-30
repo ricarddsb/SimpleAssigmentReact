@@ -11,7 +11,6 @@ class NewsProfileItem extends Component {
     const {
       id, title, publishDate, about, content,
     } = this.props.newsItem;
-    console.log('avert que recibo, ');
     const { loading } = this.props;
     return (
       <div>
