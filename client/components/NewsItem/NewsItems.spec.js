@@ -11,9 +11,35 @@ describe('NewItem ', () => {
     onClick: function(){},
   };
 
-  it('InputForm renders divs', () => {
+  const nextProps = {
+    loading: true,
+  };
+
+  it('NewsItem renders divs', () => {
     const wrapper = shallow(<NewsItem {...props}/>);
     expect(wrapper.find('td').length).toBe(3);
+  });
+
+  it('NewsItem componentShouldUpdate', () => {
+    const wrapper = shallow(<NewsItem {...props}/>);
+    const shouldUpdate = wrapper.instance().shouldComponentUpdate(nextProps)
+    expect(shouldUpdate).toBe(false);
+  });
+
+  it('NewsItem check input props', () => {
+    const wrapper = shallow(<NewsItem {...props} />);
+    const item = wrapper.find('td');
+    console.log(item);
+    expect(item.at(0).text()).toBe('<NavLink />');
+    expect(item.at(1).text()).toBe('date to be defined');
+    expect(item.at(2).text()).toBe('Title1');
+  });
+
+  it('NewsItem onclick event', () => {
+    const onClick = sinonSpy.spy();
+    const wrapper = shallow(<NewsItem onClick={onClick} />);
+    wrapper.find('tr').simulate('click');
+    expect(onClick.calledOnce).toBe(true);
   });
 
 });

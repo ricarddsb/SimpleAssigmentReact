@@ -25,7 +25,7 @@ describe('mainReducer tests', () => {
 
   const fetchNewsById = {
     type: 'FETCH_NEWS_BY_ID_SUCCESS',
-    fetchResponse: 'its a news item',
+    newsItem: 'its a news item',
   };
 
   const logOut = {
