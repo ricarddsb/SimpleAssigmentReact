@@ -3,12 +3,12 @@ import React, { Component } from 'react';
 
 class InputForm extends Component {
   static propTypes = {
-    onChange: PropTypes.func.isRequired,
-    name: PropTypes.string,
-    label: PropTypes.string,
-    type: PropTypes.string,
     id: PropTypes.string,
     forHtml: PropTypes.string,
+    label: PropTypes.string,
+    name: PropTypes.string,
+    onChange: PropTypes.func.isRequired,
+    type: PropTypes.string,
   }
 
   static defaultProps = {

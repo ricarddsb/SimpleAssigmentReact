@@ -2,7 +2,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import React, { Component } from 'react';
 import { apiActions } from 'actions';
-import { InputForm, ButtonLogin } from 'components';
+import { InputForm, GeneralButton } from 'components';
 
 class LoginPage extends Component {
   constructor(props) {
@@ -31,27 +31,31 @@ class LoginPage extends Component {
   render() {
     return (
       <form className="form-horizontal" >
-        <InputForm
-          name="username"
-          onChange={this.handleInputChange}
-          label="Username"
-          type="text"
-          id="usernameLogin"
-          forHtml="usernameLogin"
-        />
-        <InputForm
-          name="password"
-          onChange={this.handleInputChange}
-          label="Password"
-          type="password"
-          id="passwordLogin"
-          forHtml="passwordLogin"
-        />
-        <ButtonLogin
+        <div>
+          <InputForm
+            name="username"
+            onChange={this.handleInputChange}
+            label="Username"
+            type="text"
+            id="usernameLogin"
+            forHtml="usernameLogin"
+          />
+        </div>
+        <div>
+          <InputForm
+            name="password"
+            onChange={this.handleInputChange}
+            label="Password"
+            type="password"
+            id="passwordLogin"
+            forHtml="passwordLogin"
+          />
+        </div>
+        <GeneralButton
           onClick={this.handleOnLoginButtonClick}
-        >
-          Sign in
-        </ButtonLogin >
+          text="Sign in"
+          route="/news"
+        />
       </form>
     );
   }

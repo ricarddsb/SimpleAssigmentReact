@@ -6,6 +6,8 @@ import {
 } from 'react-router-dom';
 import { apiActions } from 'actions';
 
+import './NavigationBar.scss';
+
 class NavigationBar extends Component {
   constructor(props) {
     super(props);
@@ -23,7 +25,7 @@ class NavigationBar extends Component {
 
   render() {
     return (
-      <nav className="navbar navbar-light bg-faded NavBar">
+      <nav className="navbar navbar-light bg-faded NavigationBar">
         <div
           onClick={this.handleNewsOnClick}
           role="button"

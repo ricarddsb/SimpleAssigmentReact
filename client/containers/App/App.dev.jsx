@@ -1,3 +1,4 @@
+import { connect } from 'react-redux';
 import {
   DevTools,
   LoginPage,
@@ -6,7 +7,6 @@ import {
   NavigationBar,
 } from 'containers';
 import { NewsProfileItem } from 'components';
-import { connect } from 'react-redux';
 import React from 'react';
 import {
   Route,
@@ -21,9 +21,9 @@ const App = props => (
       { props.errorMessage !== '' && <Modal /> }
       <div>
         <div>
-          { props.showLogin && <NavigationBar /> }
+          { props.showLogin && <NavigationBar />}
         </div>
-        <div className="text-center App">
+        <div className="text-center container App">
           <Route exact path="/" component={LoginPage} />
           <Route exact path="/news" render={() => <NewsContainer news={props.news} />} />
           <Route

@@ -1,10 +1,10 @@
 import InputForm from './Login/InputForm';
-import ButtonLogin from './Login/ButtonLogin';
+import GeneralButton from './GeneralButton';
 import NewsItem from './NewsItem';
 import NewsProfileItem from './NewsProfileItem';
 
 export {
-  ButtonLogin,
+  GeneralButton,
   InputForm,
   NewsItem,
   NewsProfileItem,

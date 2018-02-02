@@ -1,8 +1,10 @@
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { errorActions } from 'actions';
+import { GeneralButton } from 'components';
 import React, { Component } from 'react';
-import { NavLink } from 'react-router-dom';
+
+import './Modal.scss';
 
 class Modal extends Component {
   constructor(props) {
@@ -32,11 +34,11 @@ class Modal extends Component {
         <div>
           {errorMessage}
         </div>
-        <NavLink to="/">
-          <button onClick={this.handleOnClose} className="modal-item">
-            Close
-          </button>
-        </NavLink>
+        <GeneralButton
+          onClick={this.handleOnClose}
+          text="Close"
+          route="/"
+        />
       </div>
     );
   }

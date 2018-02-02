@@ -3,29 +3,3 @@
   display: flex;
   justify-content: center;
 }
-
-.NavBar {
-  background-color: grey;
-}
-
-.NewsProfileItem {
-  text-align: left !important;
-  padding: 5px;
-  width: 500px;
-  max-width:500px;
-}
-
-.modal-wrapper {
-  margin-top: -100px;
-  font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  display: -webkit-flex;
-  flex-direction: column;
-  -webkit-flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  color: white;
-  z-index: 10;
-}

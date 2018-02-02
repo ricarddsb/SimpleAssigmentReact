@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import IconSvg from '../../assets/font/icons-male-50.svg';
+import './NewsProfileItem.scss';
 
 class NewsProfileItem extends Component {
   shouldComponentUpdate(nextProps) {
@@ -13,22 +14,22 @@ class NewsProfileItem extends Component {
     } = this.props.newsItem;
     const { loading } = this.props;
     return (
-      <div>
+      <div className="NewsProfileItem">
         { !loading &&
           <div key={id}>
-            <div className="h1 NewsProfileItem" >
+            <div className="h1" >
               {title}
             </div>
-            <div className="h5 NewsProfileItem" >
+            <div className="h5" >
               {publishDate}
             </div>
-            <div className="h5 NewsProfileItem" >
+            <div className="h5" >
               {about}
             </div>
-            <div className="NewsProfileItem">
+            <div>
               <img src={IconSvg} alt="usericon" width="100" height="100" />
             </div>
-            <div className="NewsProfileItem Content" >
+            <div >
               {content}
             </div>
           </div>

@@ -1,7 +1,7 @@
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import React, { Component } from 'react';
 import { apiActions } from 'actions';
 import { NewsItem } from 'components';
 
@@ -38,8 +38,8 @@ class NewsContainer extends Component {
   render() {
     const { news } = this.props;
     return (
-      <div className="container">
-        <table className="table table-sm table-striped table-hover table-bordered ">
+      <div>
+        <table className="table table-striped table-hover table-bordered ">
           <tbody>
             { news.map((item, index) => this.renderData(item, index)) }
           </tbody>
@@ -59,10 +59,10 @@ NewsContainer.defaultProps = {
 
 function mapStateToProps(state) {
   return {
-    userData: state.mainManager.userData,
-    showNews: state.mainManager.showNews,
-    loading: state.mainManager.loading,
     errorMessage: state.errorManager.errorMessage,
+    loading: state.mainManager.loading,
+    showNews: state.mainManager.showNews,
+    userData: state.mainManager.userData,
   };
 }
 
