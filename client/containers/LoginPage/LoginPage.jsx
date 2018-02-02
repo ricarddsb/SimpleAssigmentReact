@@ -1,7 +1,7 @@
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import React, { Component } from 'react';
-import { apiActions } from 'actions';
+import { apiActions, mainActions } from 'actions';
 import { InputForm, GeneralButton } from 'components';
 
 class LoginPage extends Component {
@@ -18,7 +18,7 @@ class LoginPage extends Component {
 
   handleOnLoginButtonClick() {
     const { username, password } = this.state;
-    this.props.apiActions.userDataInput(username, password);
+    this.props.mainActions.userDataInput(username, password);
     this.props.apiActions.loginFetch(username, password);
   }
 
@@ -64,6 +64,7 @@ class LoginPage extends Component {
 function mapDispatchToProps(dispatch) {
   return {
     apiActions: bindActionCreators(apiActions, dispatch),
+    mainActions: bindActionCreators(mainActions, dispatch),
   };
 }
 

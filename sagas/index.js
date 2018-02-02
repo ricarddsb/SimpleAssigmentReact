@@ -78,11 +78,6 @@ function* fetchRequest() {
   }
 }
 
-/* export default function* rootSaga() {
-  yield fork(searchRequest);
-  yield fork(fetchRequest);
-} */
-
 export default function* rootSaga() {
   yield all([
     fork(fetchRequest),

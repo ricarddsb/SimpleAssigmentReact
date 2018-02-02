@@ -4,30 +4,24 @@ import React, { Component } from 'react';
 import {
   NavLink,
 } from 'react-router-dom';
-import { apiActions } from 'actions';
+import { mainActions } from 'actions';
 
 import './NavigationBar.scss';
 
 class NavigationBar extends Component {
   constructor(props) {
     super(props);
-    this.handleNewsOnClick = this.handleNewsOnClick.bind(this);
     this.handleOnLogoutOnClick = this.handleOnLogoutOnClick.bind(this);
   }
 
   handleOnLogoutOnClick() {
-    this.props.apiActions.logOutClick();
-  }
-
-  handleNewsOnClick() {
-    this.props.apiActions.newsClick();
+    this.props.mainActions.logOutClick();
   }
 
   render() {
     return (
       <nav className="navbar navbar-light bg-faded NavigationBar">
         <div
-          onClick={this.handleNewsOnClick}
           role="button"
           tabIndex={0}
           onKeyUp={this.handleKeyUp}
@@ -54,7 +48,7 @@ class NavigationBar extends Component {
 
 function mapDispatchToProps(dispatch) {
   return {
-    apiActions: bindActionCreators(apiActions, dispatch),
+    mainActions: bindActionCreators(mainActions, dispatch),
   };
 }
 

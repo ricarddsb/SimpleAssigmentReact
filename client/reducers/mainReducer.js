@@ -1,18 +1,23 @@
-import { apiActions } from 'actions';
+import { apiActions, mainActions } from 'actions';
 
 const defaultState = {
+  loading: true,
   news: [''],
+  newsItem: {},
   showLogin: false,
   userData: {
     username: '',
     password: '',
   },
-  newsItem: {},
-  loading: true,
 };
 
 export default function mainManager(state = defaultState, action) {
   switch (action.type) {
+    case mainActions.LOGOUT_CLICK:
+      return {
+        ...state,
+        showLogin: false,
+      };
     case apiActions.FETCH_LOGIN_REQUEST:
       return {
         ...state,
@@ -37,16 +42,7 @@ export default function mainManager(state = defaultState, action) {
         newsItem: action.newsItem,
         loading: false,
       };
-    case apiActions.LOGOUT_CLICK:
-      return {
-        ...state,
-        showLogin: false,
-      };
-    case apiActions.NEWS_CLICK_NAVBAR:
-      return {
-        ...state,
-      };
-    case apiActions.USER_DATA_INPUT:
+    case mainActions.USER_DATA_INPUT:
       return {
         ...state,
         userData: {

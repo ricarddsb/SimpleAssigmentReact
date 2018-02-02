@@ -22,7 +22,6 @@ describe('InputForm tests', () => {
     const wrapper = shallow(<InputForm {...props} />);
     const item = wrapper.find('div');
     expect(wrapper.find('label').text()).toBe('label');
-    expect(wrapper.find('label').props().forHtml).toBe('forHtml');
   });
 
   it('InputForm check input props', () => {

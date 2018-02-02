@@ -29,7 +29,6 @@ describe('NewItem ', () => {
   it('NewsItem check input props', () => {
     const wrapper = shallow(<NewsItem {...props} />);
     const item = wrapper.find('td');
-    console.log(item);
     expect(item.at(0).text()).toBe('<NavLink />');
     expect(item.at(1).text()).toBe('date to be defined');
     expect(item.at(2).text()).toBe('Title1');

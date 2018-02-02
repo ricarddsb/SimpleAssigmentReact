@@ -2,14 +2,14 @@ import mainReducer from '../mainReducer';
 
 describe('mainReducer tests', () => {
   const defaultState = {
+    loading: true,
     news: [''],
+    newsItem: {},
     showLogin: false,
     userData: {
       username: '',
       password: '',
     },
-    newsItem: {},
-    loading: true,
   };
 
   const userDataInput = {
@@ -18,12 +18,22 @@ describe('mainReducer tests', () => {
     password: '123',
   };
 
+  const fetchLoginRequest = {
+    type: 'FETCH_LOGIN_REQUEST',
+    news: 'there are some news',
+  };
+
   const fetchLoginSuccess = {
     type: 'FETCH_LOGIN_SUCCESS',
     news: 'there are some news',
   };
 
-  const fetchNewsById = {
+  const fetchNewsByIdRequest= {
+    type: 'FETCH_NEWS_BY_ID_REQUEST',
+    newsItem: 'its a news item',
+  };
+
+  const fetchNewsByIdSuccess = {
     type: 'FETCH_NEWS_BY_ID_SUCCESS',
     newsItem: 'its a news item',
   };
@@ -40,12 +50,20 @@ describe('mainReducer tests', () => {
     expect(mainReducer(defaultState, userDataInput).userData.username).toEqual('abc');
   });
 
+  it('FETCH_LOGIN_REQUEST', () => {
+    expect(mainReducer(defaultState, fetchLoginRequest).news).toEqual('there are some news');
+  });
+
   it('FETCH_LOGIN_SUCCESS', () => {
     expect(mainReducer(defaultState, fetchLoginSuccess).news).toEqual('there are some news');
   });
 
+  it('FETCH_NEWS_BY_ID_REQUEST', () => {
+    expect(mainReducer(defaultState, fetchNewsByIdRequest).loading).toEqual(true);
+  });
+
   it('FETCH_NEWS_BY_ID_SUCCESS', () => {
-    expect(mainReducer(defaultState, fetchNewsById).newsItem).toEqual('its a news item');
+    expect(mainReducer(defaultState, fetchNewsByIdSuccess).newsItem).toEqual('its a news item');
   });
 
   it('LOGOUT_CLICK', () => {
