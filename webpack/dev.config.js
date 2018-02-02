@@ -1,6 +1,7 @@
 import webpack from 'webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import config from './config';
+import postcssConfig from '../postcss.config';
 
 // Webpack configuration
 export default {
@@ -60,13 +61,8 @@ export default {
           },
           {
             loader: 'postcss-loader',
-            options: { // eslint-disable-next-line
-              plugins: function () { // post css plugins, can be exported to postcss.config.js
-                return [// eslint-disable-next-line
-                  require('precss'),// eslint-disable-next-line
-                  require('autoprefixer')
-                ];
-              },
+            options: {
+              postcssConfig,
             },
           },
           {
