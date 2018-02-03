@@ -17,14 +17,20 @@ class NewsItem extends Component {
     } = this.props;
     return (
       <tr key={id} onClick={() => onClick(id)}>
-        <td colSpan="2">
+        <td>
           <NavLink to="profile">
             <img src={IconSvg} alt="usericon" width="22" height="22" />
           </NavLink>
         </td>
-        <td>{PublishDate}</td>
         <td>
-          {Title}
+          <NavLink to="profile" style={{ textDecoration: 'none', color: 'inherit' }}>
+            {PublishDate}
+          </NavLink>
+        </td>
+        <td>
+          <NavLink to="profile" style={{ textDecoration: 'none', color: 'inherit' }}>
+            {Title}
+          </NavLink>
         </td>
       </tr>
     );

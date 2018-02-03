@@ -1,7 +1,7 @@
 import News from '../models/news';
 
-export async function getNews(req, res) {
-  return News.find().exec((err, news) => {
+export function getNews(req, res) {
+  return News.find({}, (err, news) => {
     if (err) {
       res.status(500).send(err);
     }
@@ -9,8 +9,8 @@ export async function getNews(req, res) {
   });
 }
 
-export async function getNewsById(req, res) {
-  return News.findOne({ id: req.params.id }).exec((err, newsItem) => {
+export function getNewsById(req, res) {
+  return News.findOne({ id: req.params.id }, (err, newsItem) => {
     if (err) {
       res.status(500).send(err);
     }

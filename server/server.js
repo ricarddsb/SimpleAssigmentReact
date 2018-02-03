@@ -17,18 +17,16 @@ mongoose.connect(serverConfig.mongoURL, (error) => {
       is installed and running!`); // eslint-disable-line no-console
     throw error;
   }
-  console.log('entered instance');
   // feed some dummy data in DB.
   mockData();
 });
 
 app.use((req, res, next) => {
+  req.headers['if-none-match'] = 'no-match-for-this'; // added as OPTION cors req will have the
+  // same value for GET to see json resp.
   res.header('Access-Control-Allow-Origin', 'http://localhost:8080');
-  res.header('Access-Control-Allow-Methods', 'GET,POST,DELETE');
-  res.header(
-    'Access-Control-Allow-Headers',
-    'Origin, Content-Type, Accept, Authorization',
-  );
+  res.header('Access-Control-Allow-Methods', 'GET');
+  res.header('Access-Control-Allow-Headers', 'Authorization');
   next();
 });
 

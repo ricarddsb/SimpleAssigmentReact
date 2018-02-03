@@ -1,4 +1,4 @@
-import newsRoutes from './news_routes';
+import newsRoutes from './newsRoutes';
 
 export default function (app) {
   newsRoutes(app);

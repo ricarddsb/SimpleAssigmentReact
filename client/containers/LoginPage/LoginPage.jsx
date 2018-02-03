@@ -4,6 +4,8 @@ import React, { Component } from 'react';
 import { apiActions, mainActions } from 'actions';
 import { InputForm, GeneralButton } from 'components';
 
+import './LoginPage.scss';
+
 class LoginPage extends Component {
   constructor(props) {
     super(props);
@@ -51,11 +53,13 @@ class LoginPage extends Component {
             forHtml="passwordLogin"
           />
         </div>
-        <GeneralButton
-          onClick={this.handleOnLoginButtonClick}
-          text="Sign in"
-          route="/news"
-        />
+        <div className="ButtonLogin">
+          <GeneralButton
+            onClick={this.handleOnLoginButtonClick}
+            text="Sign in"
+            route="/news"
+          />
+        </div>
       </form>
     );
   }

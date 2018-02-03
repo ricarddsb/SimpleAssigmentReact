@@ -5,7 +5,7 @@ import React, { Component } from 'react';
 import { apiActions } from 'actions';
 import { NewsItem } from 'components';
 
-import './NewsContainer';
+import './NewsContainer.scss';
 
 class NewsContainer extends Component {
   constructor(props) {
@@ -39,7 +39,7 @@ class NewsContainer extends Component {
     const { news } = this.props;
     return (
       <div>
-        <table className="table table-striped table-hover table-bordered ">
+        <table className="table table-striped table-hover table-condensed">
           <tbody>
             { news.map((item, index) => this.renderData(item, index)) }
           </tbody>

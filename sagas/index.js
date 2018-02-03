@@ -7,7 +7,7 @@ import {
 } from 'redux-saga/effects';
 import { apiActions, errorActions } from 'actions';
 
-async function login(username, password) {
+function login(username, password) {
   return fetch(
     'http://localhost:8001/api/v1/news',
     {
@@ -23,10 +23,10 @@ async function login(username, password) {
       return response.statusText;
     }
     return response.json();
-  }).catch(error => error);
+  });
 }
 
-async function getNewsById(itemIndex, username, password) {
+function getNewsById(itemIndex, username, password) {
   return fetch(
     `http://localhost:8001/api/v1/news/${itemIndex}`,
     {
