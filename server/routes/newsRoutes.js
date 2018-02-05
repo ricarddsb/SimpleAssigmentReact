@@ -1,6 +1,6 @@
 import { getNews, getNewsById } from '../controllers/newsController';
 
-const auth = { login: '123', password: '123' };
+const auth = { login: 'user', password: 'FCtb2PGbHpgq' };
 
 export default function (app) {
   app.get('/api/v1/news', (req, res) => {
